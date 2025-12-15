@@ -132,7 +132,7 @@ export const FullPlayer: React.FC<FullPlayerProps> = ({
       </div>
 
       {/* --- Unified Bottom Glass Panel --- */}
-      <div className={`absolute bottom-0 w-full h-[38%] z-30 backdrop-blur-3xl bg-gradient-to-b from-[#1e40af]/30 to-[#172554]/50 border-t border-white/20 flex flex-col items-center justify-start pt-10 shadow-[0_-15px_50px_rgba(0,0,0,0.3)] transition-transform duration-500 ease-in-out ${showSettings ? 'translate-y-full' : 'translate-y-0'}`}>
+      <div className={`absolute bottom-0 w-full h-[38%] z-30 backdrop-blur-2xl bg-gradient-to-b from-[#1e40af]/30 to-[#172554]/60 border-t border-white/20 flex flex-col items-center justify-start pt-10 shadow-[0_-15px_50px_rgba(0,0,0,0.3)] transition-transform duration-500 ease-in-out ${showSettings ? 'translate-y-full' : 'translate-y-0'}`}>
           
           {/* Decorative Top 'Tab' feel */}
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
@@ -218,16 +218,16 @@ export const FullPlayer: React.FC<FullPlayerProps> = ({
       {/* --- Settings Overlay (New) --- */}
       {/* Elegant Frosted Glass Slide-up */}
       <div 
-        className={`absolute inset-x-0 bottom-0 z-50 bg-slate-950/80 backdrop-blur-3xl border-t border-white/10 rounded-t-[2.5rem] pt-2 pb-10 px-6 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${showSettings ? 'translate-y-0' : 'translate-y-full'}`}
+        className={`absolute inset-x-0 bottom-0 z-50 bg-[#020617]/85 backdrop-blur-3xl border-t border-white/10 rounded-t-[2.5rem] pt-2 pb-10 px-6 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-[0_-10px_40px_rgba(0,0,0,0.5)] ${showSettings ? 'translate-y-0' : 'translate-y-full'}`}
       >
           {/* Drag Handle */}
           <div className="w-full flex justify-center py-4 cursor-pointer" onClick={() => setShowSettings(false)}>
-              <div className="w-12 h-1.5 bg-white/20 rounded-full"></div>
+              <div className="w-12 h-1.5 bg-white/20 rounded-full hover:bg-white/40 transition"></div>
           </div>
 
           <div className="flex items-center justify-between mb-8 px-2">
               <h3 className="text-xl font-bold text-white tracking-wide">Playback Settings</h3>
-              <button onClick={() => setShowSettings(false)} className="bg-white/10 p-2 rounded-full active:scale-90 transition">
+              <button onClick={() => setShowSettings(false)} className="bg-white/10 p-2 rounded-full active:scale-90 transition hover:bg-white/20">
                   <X size={20} />
               </button>
           </div>
@@ -235,13 +235,13 @@ export const FullPlayer: React.FC<FullPlayerProps> = ({
           <div className="flex flex-col gap-5">
               
               {/* Dark Mode Toggle */}
-              <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex items-center justify-between">
+              <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex items-center justify-between active:scale-[0.99] transition-transform">
                   <div className="flex items-center gap-4">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isDarkMode ? 'bg-indigo-500 text-white' : 'bg-orange-400 text-white'}`}>
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${isDarkMode ? 'bg-indigo-500 text-white' : 'bg-orange-400 text-white'}`}>
                           {isDarkMode ? <Moon size={20} /> : <Sun size={20} />}
                       </div>
                       <div className="flex flex-col">
-                          <span className="font-semibold text-base">Dark Mode</span>
+                          <span className="font-semibold text-base text-white">Dark Mode</span>
                           <span className="text-xs text-white/50">{isDarkMode ? 'On' : 'Off'}</span>
                       </div>
                   </div>
@@ -257,11 +257,11 @@ export const FullPlayer: React.FC<FullPlayerProps> = ({
               <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col gap-4 transition-all duration-300">
                   <div className="flex items-center justify-between w-full">
                       <div className="flex items-center gap-4">
-                          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isEqualizerEnabled ? 'bg-pink-500 text-white' : 'bg-slate-600 text-white'}`}>
+                          <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${isEqualizerEnabled ? 'bg-pink-500 text-white' : 'bg-slate-600 text-white'}`}>
                               <Zap size={20} />
                           </div>
                           <div className="flex flex-col">
-                              <span className="font-semibold text-base">Equalizer</span>
+                              <span className="font-semibold text-base text-white">Equalizer</span>
                               <span className="text-xs text-white/50">{isEqualizerEnabled ? eqPreset : 'Disabled'}</span>
                           </div>
                       </div>
@@ -279,7 +279,7 @@ export const FullPlayer: React.FC<FullPlayerProps> = ({
                           <button
                              key={preset}
                              onClick={() => setEqPreset(preset)}
-                             className={`py-2 px-3 rounded-xl text-xs font-medium border transition-all active:scale-95 ${eqPreset === preset ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-900/50' : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10'}`}
+                             className={`py-2 px-3 rounded-xl text-xs font-medium border transition-all active:scale-95 ${eqPreset === preset ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-900/50' : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/20 hover:text-white'}`}
                           >
                              {preset}
                           </button>
